@@ -28,12 +28,12 @@ const BlogPage = () => {
       <Layout>
         <h1>List of Blogs</h1>
         <ol>
-          {data.allMarkdownRemark.edges.map(post => {
+          {data.allMarkdownRemark.edges.map(edge => {
             const {
               frontmatter: { title, date },
               excerpt,
               fields: { slug },
-            } = post.node
+            } = edge.node
             return (
               <li key={slug}>
                 <h2>
