@@ -1,6 +1,6 @@
 ---
 title: "The Great Gatsby Bootcamp"
-date: "2020-08-07"
+date: "2020-03-07"
 author: "Ivan Duran"
 ---
 
