@@ -11,3 +11,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 1. Item 1
 2. Item 2
 3. Item 4
+
+Some other **Markdown** _syntax_
+
+```js
+import React from 'react';
+```
