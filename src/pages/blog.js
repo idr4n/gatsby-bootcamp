@@ -7,7 +7,7 @@ import blogStyles from "./blog.module.scss"
 const BlogPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         edges {
           node {
             frontmatter {
@@ -23,10 +23,10 @@ const BlogPage = () => {
     }
   `)
 
-  // sort blog posts based on date in descending order
-  data.allMarkdownRemark.edges.sort((a, b) =>
-    a.node.frontmatter.date < b.node.frontmatter.date ? 1 : -1
-  )
+  // // sort blog posts based on date in descending order
+  // data.allMarkdownRemark.edges.sort((a, b) =>
+  //   a.node.frontmatter.date < b.node.frontmatter.date ? 1 : -1
+  // )
 
   return (
     <div>
