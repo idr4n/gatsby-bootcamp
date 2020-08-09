@@ -12,11 +12,20 @@ const BlogPage = () => {
           node {
             frontmatter {
               title
-              date
+              date(formatString: "MMMM Do, YYYY")
             }
             fields {
               slug
             }
+          }
+        }
+      }
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
+        edges {
+          node {
+            title
+            slug
+            publishedDate(formatString: "MMMM Do, YYYY")
           }
         }
       }
@@ -32,6 +41,19 @@ const BlogPage = () => {
     <div>
       <Layout>
         <h1>List of Blogs</h1>
+        <ol className={blogStyles.posts}>
+          {data.allContentfulBlogPost.edges.map(edge => {
+            const { title, slug, publishedDate } = edge.node
+            return (
+              <li key={slug} className={blogStyles.post}>
+                <Link to={`/blog/${slug}`}>
+                  <h2>{title}</h2>
+                  <p>Date: {publishedDate}</p>
+                </Link>
+              </li>
+            )
+          })}
+        </ol>
         <ol className={blogStyles.posts}>
           {data.allMarkdownRemark.edges.map(edge => {
             const {
